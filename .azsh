@@ -1,0 +1,62 @@
+_azsh() {
+	export azsh_script=".azsh"
+
+	############################### Handy's ################################
+	aed() {
+		nano "$1"
+	}
+	
+	aged() {
+		gedit "$1"
+	}
+
+	aedlo() {
+		if [ "$1" = "azsh" ]; then
+			eval "aed ~/$azsh_script"
+			azsh
+		else
+			aed "$1"
+			if [ "$1" = "$azsh_script" ] || [ "$1" = ~"/$azsh_script" ]; then
+				azsh
+			else
+				source "$1"
+			fi
+		fi
+	}
+
+	agedlo() {
+		if [ "$1" = "azsh" ]; then
+			eval "aged ~/$azsh_script"
+			azsh
+		else
+			aged "$1"
+			if [ "$1" = "$azsh_script" ] || [ "$1" = ~"/$azsh_script" ]; then
+				azsh
+			else
+				source "$1"
+			fi
+		fi
+	}
+
+	ago() {
+		eval "\$${1}"
+	}
+
+	aboro() {
+		mkdir "$1"
+		cd "$1"
+	}
+
+	amvdownload() {
+		mv "$downloads/$1" "$2"	
+	}
+	############################### Special Handy's ########################
+	boro() {
+		aboro "$1"
+	}
+
+	go() {
+		ago "$1"
+	}
+}
+

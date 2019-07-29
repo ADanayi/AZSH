@@ -1,0 +1,26 @@
+_myazsh() {
+	export me="/media/adanayi/Me"
+	export downloads="$HOME/Downloads"
+
+	####################### Down with Uni!!!! ##############################
+	export academic="$me/Academic"
+	export paper="$academic/Paper"
+
+	############################ Myco!!!! ##################################
+	local myco_vserver_ip="192.168.1.98"	
+
+	export myco="/media/adanayi/Me/Myco"
+	export myco_git="$myco/Phase10/Git/drmyco"
+	export myco_clang="$myco_git/../build-DrMyco-CLangCompilers-Debug"
+	export myco_vserver="$myco/Mount/Desktop/Server"
+
+	myco_init_vserver() {
+		sh $myco/mountServer.sh
+		cd $myco_vserver
+	}
+
+	myco_ssh() {
+		ssh myco@192.168.1.98
+	}
+}
+
