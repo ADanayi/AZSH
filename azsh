@@ -1,9 +1,10 @@
 _azsh() {
 	export azsh_script=".azsh"
 
+	export _azsh_dest=""
 	############################### Handy's ################################
 	aed() {
-		nano "$1"
+		vim "$1"
 	}
 	
 	aged() {
@@ -47,8 +48,40 @@ _azsh() {
 		cd "$1"
 	}
 
-	amvdownload() {
-		mv "$downloads/$1" "$2"	
+	adu() {
+		for f in *; do
+			du -hs "$f"
+		done	
+	}
+
+	arm() {
+		rm -rf "$1"
+	}
+
+	ad() {
+		echo "$_azsh_dest"
+	}
+
+	adcp() {
+		cp ${1} "${_azsh_dest}/${2}"
+	}
+
+	adset() {
+		if [ "$1" = "-r" ] || [ "$1" = "" ]; then
+			_azsh_dest="$(pwd)/${2}"
+		else
+			_azsh_dest="$1"
+		fi
+	}
+
+	admv() {
+		mv ${1} "${_azsh_dest}"
+	}
+
+	adpass() {
+		local r="$_azsh_dest"
+		_azsh_dest="$(pwd)"
+		cd "$r"
 	}
 	############################### Special Handy's ########################
 	boro() {
